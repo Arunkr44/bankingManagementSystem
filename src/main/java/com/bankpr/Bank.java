@@ -17,37 +17,7 @@ public class Bank {
 	
 	//Shows Customer balance
 	static public void transactionCustomer() {
-		  // Display options for the customer transaction
-		System.out.println("1.View Balance");
- 	   System.out.println("2.Exit");
- 	   Scanner scanner5=new Scanner(System.in);
- 	   System.out.print("Enter your choice: ");
-		int choice = scanner5.nextInt();
-		scanner5.nextLine();		
-	TransactionServiceImpl tService2=new TransactionServiceImpl();
-		
-		Customer cs2=new Customer();
-		switch (choice) {
-		case 1:
-			System.out.println("Enter Customer ID");
-		    long cid2=scanner5.nextLong();
-			Optional<Customer> optionalAccount2 = tService2.findById(cid2);
-			 // Retrieve customer account details if present
-			 optionalAccount2 = tService2.findById(cid2);
-		        if (optionalAccount2.isPresent()) {
-		           Customer customer = optionalAccount2.get();
-		            double balance = tService2.getBalance(customer);
-		            String customerName=customer.getCustomerName();
-		            System.out.println("Customer "+customerName+" Has Account Balance: Rs " + balance);
-		        }
-		        break;
-		case 2:
-			mainMenu(); // Return to the main menu
-
-		default:
-			System.out.println("Invalid choice. Please enter a valid option.");
-		}
-		
+		transactionMenu();		
 	}
 	
 	
@@ -163,9 +133,7 @@ public class Bank {
 					System.out.println("3. Update Account");
 					System.out.println("4. Show All Account Details");
 					System.out.println("5. Search by Account Number");
-					System.out.println("6. Transaction ");
-
-					System.out.println("7. Exit");
+					System.out.println("6. Exit");
 
 					System.out.print("Enter your choice: ");
 					int choice = scanner.nextInt();
@@ -198,10 +166,9 @@ public class Bank {
 
 						break;
 					case 6:
-						transactionMenu();
-					case 7:
 						System.out.println("Exiting the application. Goodbye!");
 						System.exit(0);
+					
 
 					default:
 						System.out.println("Invalid choice. Please enter a valid option.");
